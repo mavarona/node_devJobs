@@ -68,6 +68,8 @@ app.use((err, req, res) => {
     res.render('error');
 });
 
-app.listen(process.env.PORT, () => {
+const host = '0.0.0.0';
+
+app.listen(process.env.PORT, host, () => {
     console.log(`Server running in the port ${process.env.PORT}`);
 });
