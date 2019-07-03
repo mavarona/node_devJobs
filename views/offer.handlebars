@@ -1,0 +1,84 @@
+<div class="contenido-superior vacante contenedor">
+    <div class="caja">
+        <p class="etiqueta">
+            Empresa
+        </p>
+        <p class="nombre">
+            {{offer.company}}
+        </p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">
+            Ubicación
+        </p>
+        <p class="nombre">
+            {{offer.location}}
+        </p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">
+            Contrato
+        </p>
+        <p class="nombre">
+            {{offer.contract}}
+        </p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">
+            Salario
+        </p>
+        <p class="nombre">
+            {{offer.salary}}
+        </p>
+    </div>
+</div>
+<div class="vacante-contenedor contenedor">
+    <main class="contenido">
+        <h2>Descripción de la Oferta</h2>
+        <div class="vacante-descripcion">
+            {{{offer.description}}}
+        </div>
+        <a href="/offers/edit/{{offer.url}}" class="btn btn-azul editar-btn">Editar Oferta</a>
+    </main>
+    <aside class="sidebar">
+        <h2>Conocimientos Deseados</h2>
+        <ul class="skills">
+            {{#each offer.skills}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </aside>
+</div>
+
+<div class="contenedor datos-reclutador">
+    <div class="enviar-datos">
+        <h2>Contactar Reclutador</h2>
+        <p>Llena el siguiente formulario, sube tu curriculum y pronto te contactaremos</p>
+        <form action="/offers/{{offer.url}}" method="POST" class="default-form" enctype="multipart/form-data">
+            <div class="campo">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" placeholder="Nombre">
+            </div>
+            <div class="campo">
+                <label for="email">E-Mail</label>
+                <input type="email" name="email" placeholder="E-Mail">
+            </div>
+            <div class="campo">
+                <label for="cv">CV (Pdf)</label>
+                <input type="file" name="cv">
+            </div>
+            <div class="campo">
+                <input type="submit" class="btn btn-verde" value="Enviar">
+            </div>
+        </form>
+    </div>
+    <div class="info-reclutador">
+        <h2>Información Reclutador</h2>
+        {{#if offer.author.name}}
+        <p>{{offer.author.name}}</p>
+        {{/if}}
+        {{#if offer.author.img}}
+        <img src="/uploads/profiles/{{offer.author.img}}">
+        {{/if}}
+    </div>
+</div>

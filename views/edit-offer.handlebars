@@ -1,0 +1,48 @@
+<div class="contendor">
+    <form action="/offers/edit/{{offer.url}}" method="POST" class="default-form">
+        <h3>Información General</h3>
+        <div class="campo">
+            <label>Título</label>
+            <input type="text" value="{{offer.title}}" name="title" placeholder="Ej: React Developer" />
+        </div>
+        <div class="campo">
+            <label>Empresa</label>
+            <input type="text" value="{{offer.company}}" name="company" placeholder="Ej: Empresa Contrata" />
+        </div>
+        <div class="campo">
+            <label>Ubicación</label>
+            <input type="text" value="{{offer.location}}" name="location" placeholder="Ej: España" />
+        </div>
+        <div class="campo">
+            <label>Salario (€)</label>
+            <input type="text" value="{{offer.salary}}" name="salary" placeholder="Ej: 32000 €" />
+        </div>
+        <div class="campo">
+            <label>Contrato</label>
+            <select name="contract">
+                {{#typeContract offer.contract}}
+                <option value="" disabled selected>-- Selecciona --</option>
+                <option value="freelance">Freelance</option>
+                <option value="Jornada Completa">Jornada Completa</option>
+                <option value="Media Jornada">Media Jornada</option>
+                <option value="Por Proyecto">Por Proyecto</option>
+                {{/typeContract}}
+            </select>
+        </div>
+        <h3>Descripción de la Oferta</h3>
+        <div class="campo descripcion">
+            <label>Descripción</label>
+            <input type="hidden" id="x" value="{{{offer.description}}}" name="description" />
+            <trix-editor input="x"></trix-editor>
+        </div>
+        <h3>Conocimientos</h3>
+        <ul class="lista-conocimientos">
+            {{#selectSkills offer.skills}}
+            {{/selectSkills}}
+        </ul>
+        <div class="campo centrar-horizontal">
+            <input type="hidden" name="skills" id="skills" />
+            <input type="submit" value="Guardar Cambios" class="btn btn-azul" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/trix.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>{{namePage}}</title>
+</head>
+
+<body>
+    <div class="nombre-sitio contenedor">
+        <h1>
+            <a href="/">DevJobs</a>
+        </h1>
+        {{#if bar}}
+        <div class="buscador">
+            <form action="/search" method="POST">
+                <input type="text" name="q" class="buscar" />
+                <input type="submit" value="buscar" />
+            </form>
+        </div>
+        {{/if}}
+
+        {{#if logout}}
+        <div class="cerrar-sesion">
+            <p>Hola! {{name}}</p>
+            {{#if img}}
+            <img src="/uploads/profiles/{{img}}" class="admin-perfil">
+            {{/if}}
+            <a href="/admin">Administración</a>
+            <a href="/logout">Cerrar Sesión</a>
+        </div>
+        {{/if}}
+    </div>
+    <div class="site-header contenedor separador">
+        <h2>{{namePage}}</h2>
+        {{#if bar}}
+        <p class="tagline">{{tagline}}</p>
+        {{/if}}
+        {{#if button}}
+        <a href="/offers/new" class="btn btn-azul">Publicar Nueva Oferta</a>
+        {{/if}}
+    </div>
+    <div class="contenido-principal contenedor">
+        {{#if messages}}
+        <div class="alertas">
+            {{#showAlerts messages}}
+            {{/showAlerts}}
+        </div>
+        {{/if}}
+        {{{body}}}
+    </div>
+
+    <script src="/js/trix.js"></script>
+    <script src="/dist/bundle.js"></script>
+</body>
+
+</html>
