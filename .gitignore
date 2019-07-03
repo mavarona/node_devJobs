@@ -1,2 +1,5 @@
 node_modules
 package-lock.json
+public/uploads/cv/*
+public/uploads/profiles/*
+variables.env
